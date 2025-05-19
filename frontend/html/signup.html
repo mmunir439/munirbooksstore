@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/frontend/styles/signup.css" />
+  </head>
+  <body>
+    <!-- Signup Section -->
+    <div class="containerloginsing">
+      <div id="signupSection">
+        <h2>Sign Up</h2>
+        <form action="../backend/signup.php" method="POST">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Full Name"
+            required
+          />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+          <input
+            type="text"
+            id="address"
+            name="address"
+            placeholder="Address"
+            required
+          />
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            placeholder="Phone Number"
+            required
+          />
+          <input type="number" id="age" name="age" placeholder="Age" required />
+          <input
+            type="text"
+            id="city"
+            name="city"
+            placeholder="City"
+            required
+          />
+          <input type="date" id="dob" name="dob" required />
+          <input type="file" id="photo" name="photo" accept="image/*" />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <button id="signup">Sign Up</button>
+        </form>
+        <p>
+          Already have an account?
+          <a
+            href="/frontend/html/login.html"
+            id="signupswitchingtologininterface"
+            style="text-decoration: none"
+            >Login</a
+          >
+        </p>
+      </div>
+    </div>
+
+    <script src="/frontend/javascript/signup.js"></script>
+  </body>
+</html>

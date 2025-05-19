@@ -1,0 +1,413 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* header section  */
+body {
+  flex-wrap: wrap;
+}
+header {
+  width: 100%;
+}
+
+.brand {
+  margin-left: -50px;
+  padding-left: -10px;
+}
+
+.brand span {
+  font-size: 25px;
+}
+a strong {
+  font-size: 19px;
+  text-decoration: none;
+}
+.brand a span i {
+  color: orangered;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+header nav {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 2px;
+}
+@media screen and (max-width: 768px) {
+  header nav {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .brand {
+    position: relative;
+    left: 40px;
+  }
+  .brand span {
+    font-size: 15px;
+  }
+  header nav ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    list-style-type: none;
+  }
+  header nav ul li {
+    padding: 6px 10px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+header nav ul li {
+  padding: 10px 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 7px;
+  text-decoration-color: brown;
+}
+/* hero section  */
+#hero {
+  text-align: center;
+  height: 120px;
+  margin-top: 20px;
+}
+#hero h2 {
+  text-align: center;
+  padding: 10px 17px;
+}
+#hero input {
+  padding: 10px 20px;
+}
+input::placeholder {
+  font-size: 17px;
+}
+button {
+  padding: 12px 20px;
+  border: none;
+  background-color: burlywood;
+  font-size: 15px;
+  border-radius: 10px;
+}
+@media screen and (max-width: 768px) {
+  #hero {
+    text-align: center;
+    height: 130px;
+    margin: 10px 5px 50px 5px;
+  }
+  #hero h2 {
+    text-align: center;
+    padding: 5px 10px;
+  }
+  #hero input {
+    padding: 5px 20px;
+    margin-bottom: 10px;
+  }
+  input::placeholder {
+    font-size: 17px;
+  }
+  button {
+    padding: 12px 20px;
+    border: none;
+    background-color: burlywood;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+}
+button:hover {
+  border: 1px solid white;
+  background-color: black;
+  color: white;
+}
+@media screen and (max-width: 768px) {
+  .booksAvailable {
+    display: flex;
+    justify-content: center;
+    margin: 10px 5px;
+    background-color: burlywood;
+    border-radius: 10px;
+  }
+  .bookshelf_one {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+  .bookshelf_one li {
+    margin: 1px;
+  }
+  .bookshelf_one li a {
+    letter-spacing: 1px;
+    padding: 2px;
+    font-size: 12px;
+    font-family: cursive;
+  }
+  .bookshelf_one li a:hover {
+    color: white;
+  }
+}
+.booksAvailable {
+  display: flex;
+  justify-content: center;
+}
+.bookshelf_one {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: justify;
+  display: none;
+}
+.bookshelf_one li {
+  text-align: center;
+  margin: 2px;
+}
+.featured {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 35px 10px;
+  height: auto; /* Allow height to adjust dynamically */
+}
+
+.featured .card {
+  width: 200px; /* Set a fixed width for cards */
+  margin: 10px; /* Add spacing between cards */
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .featured {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center;
+    margin: 20px 0; /* Add spacing above and below */
+  }
+
+  .featured .card {
+    width: 90%; /* Make cards take up most of the screen width */
+  }
+}
+
+/* Ensure proper spacing for testimonial reviews */
+/* Testimonial Reviews Section */
+.textimonial_reviews {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.textimonial_reviews div {
+  position: relative;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.textimonial_reviews img {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ddd;
+  background-color: white;
+}
+
+.textimonial_reviews h2 {
+  margin-top: 50px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.textimonial_reviews p {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .textimonial_reviews {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .textimonial_reviews div {
+    width: 90%;
+  }
+
+  .textimonial_reviews img {
+    width: 70px;
+    height: 70px;
+    top: -35px;
+  }
+
+  .textimonial_reviews h2 {
+    font-size: 1rem;
+  }
+
+  .textimonial_reviews p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .textimonial_reviews img {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+  }
+
+  .textimonial_reviews h2 {
+    font-size: 0.9rem;
+  }
+
+  .textimonial_reviews p {
+    font-size: 0.8rem;
+  }
+}
+/* footersection is going to heare */
+/* Footer Section */
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #2c3e50; /* Darker background for a modern look */
+  color: #fff;
+  text-align: center;
+}
+
+footer div,
+footer nav {
+  flex: 1;
+  padding: 10px;
+}
+
+/* Payment Methods */
+.payment_method {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.payment_method span {
+  margin: 5px;
+  display: inline-block;
+}
+
+/* Social Links */
+.social-links a {
+  margin: 10px;
+  color: #f39c12; /* Highlighted color */
+  font-size: 16px;
+  transition: 0.3s ease-in-out;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+  color: #e67e22;
+}
+
+/* Footer Navigation */
+footer nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+footer nav ul li {
+  margin: 5px 15px;
+}
+
+footer nav ul li a {
+  color: #fff;
+  font-size: 16px;
+  transition: 0.3s ease-in-out;
+}
+
+footer nav ul li a:hover {
+  color: #f39c12;
+  text-decoration: underline;
+}
+
+/* Terms & Conditions */
+#terms_condition {
+  margin-top: 10px;
+}
+
+#terms_condition a {
+  color: #fff;
+  font-weight: bold;
+}
+
+#terms_condition a:hover {
+  color: #f39c12;
+}
+
+/* Responsive Footer */
+@media screen and (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    padding: 30px 10px;
+  }
+
+  .payment_method span {
+    display: block;
+    margin: 8px 0;
+  }
+
+  footer nav ul {
+    flex-direction: column;
+  }
+
+  footer nav ul li {
+    padding: 8px 0;
+  }
+
+  .social-links a {
+    display: block;
+    margin: 8px 0;
+  }
+}
