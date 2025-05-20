@@ -11,7 +11,10 @@
     <div class="containerloginsing">
       <div id="signupSection">
         <h2>Sign Up</h2>
-        <form action="../backend/signup.php" method="POST">
+        <form
+          action="http://localhost/online_book_storeee/backend/signup.php" id="signupForm"
+          method="POST"
+        >
           <input
             type="text"
             id="name"
@@ -41,15 +44,7 @@
             required
           />
           <input type="number" id="age" name="age" placeholder="Age" required />
-          <input
-            type="text"
-            id="city"
-            name="city"
-            placeholder="City"
-            required
-          />
-          <input type="date" id="dob" name="dob" required />
-          <input type="file" id="photo" name="photo" accept="image/*" />
+          <input type="date" id="DOB" name="DOB" required />
           <input
             type="password"
             id="password"
@@ -57,20 +52,16 @@
             placeholder="Password"
             required
           />
-          <button id="signup">Sign Up</button>
+          <button type="submit">Sign Up</button>
         </form>
         <p>
           Already have an account?
-          <a
-            href="/frontend/html/login.html"
-            id="signupswitchingtologininterface"
-            style="text-decoration: none"
+          <a href="/frontend/html/login.html" style="text-decoration: none"
             >Login</a
           >
         </p>
       </div>
     </div>
-
     <script src="/frontend/javascript/signup.js"></script>
   </body>
 </html>
