@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f4f7f9;
+  color: #333;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
+  color: white;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  font-size: 1.8rem;
+}
+header h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+header ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+header ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+header ul li a:hover {
+  color: orangered;
+  text-decoration: underline;
+}
+
+/* Book List */
+#book_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 20px;
+}
+
+#book_list section {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  width: 280px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+#book_list section:hover {
+  transform: translateY(-8px);
+}
+
+#book_list section img {
+  width: 100px;
+  height: 140px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  object-fit: cover;
+}
+
+section div h4 {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+  color: #2c3e50;
+}
+
+section div p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+section div button {
+  padding: 10px 20px;
+  background-color: orangered;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+section div button:hover {
+  background-color: white;
+  color: orangered;
+  border: 2px solid orangered;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+}
+
+footer div {
+  flex: 1 1 300px;
+}
+
+.payment_method span {
+  display: inline-block;
+  margin: 5px 10px;
+  font-weight: bold;
+}
+
+.social-links a {
+  color: #f39c12;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #e67e22;
+  text-decoration: underline;
+}
+
+footer nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+footer nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+footer nav ul li a:hover {
+  color: #f39c12;
+  text-decoration: underline;
+}
+
+#terms_condition a {
+  color: #fff;
+  font-weight: bold;
+}
+
+#terms_condition a:hover {
+  color: #f39c12;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  header ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #book_list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+
+  footer nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

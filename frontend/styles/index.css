@@ -307,47 +307,6 @@ button:hover {
 }
 /* footersection is going to heare */
 /* Footer Section */
-footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-  background-color: #2c3e50; /* Darker background for a modern look */
-  color: #fff;
-  text-align: center;
-}
-
-footer div,
-footer nav {
-  flex: 1;
-  padding: 10px;
-}
-
-/* Payment Methods */
-.payment_method {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.payment_method span {
-  margin: 5px;
-  display: inline-block;
-}
-
-/* Social Links */
-.social-links a {
-  margin: 10px;
-  color: #f39c12; /* Highlighted color */
-  font-size: 16px;
-  transition: 0.3s ease-in-out;
-}
-
-.social-links a:hover {
-  text-decoration: underline;
-  color: #e67e22;
-}
-
 /* Footer Navigation */
 footer nav ul {
   list-style: none;

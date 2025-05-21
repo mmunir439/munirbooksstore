@@ -10,12 +10,21 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
+/* #headerddd {
+  position: sticky;
+  top: 20px;
+} */
 header {
+  position: sticky;
+  top: 0;
   width: 100%;
   padding: 10px;
   background: orangered;
   text-align: center;
+}
+a {
+  text-decoration: none;
+  color: white;
 }
 
 nav ul {

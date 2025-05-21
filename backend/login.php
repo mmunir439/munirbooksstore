@@ -1,49 +1,67 @@
 <?php
-session_start(); // Start session for authentication
-include '../backend/connect.php'; // Include database connection
+include '../backend/connect.php'; // Database connection
 
-// Enable error reporting for debugging
+// Enable error reporting (for debugging)
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// Set response type to JSON
+header('Content-Type: application/json');
+
+// Only allow POST requests
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    die("Error: Invalid request method. Please submit the form correctly.");
+    echo json_encode(["status" => "error", "message" => "Invalid request method. Use POST."]);
+    exit;
 }
 
-// Retrieve user input
-$email = trim($_POST["email"]);
+// Check if email and password are sent
+if (empty($_POST["email"]) || empty($_POST["password"])) {
+    echo json_encode(["status" => "error", "message" => "Email and password are required."]);
+    exit;
+}
+
+// Retrieve email and password from form
+$email = strtolower(trim($_POST["email"]));
 $password = trim($_POST["password"]);
 
-// Validate inputs
-if (empty($email) || empty($password)) {
-    die("Error: Please fill in all fields.");
+// Connect check
+if (!$conn) {
+    echo json_encode(["status" => "error", "message" => "Database connection failed."]);
+    exit;
 }
 
-// Prepare SQL query to check if the email exists
+// Prepare SQL to find user by email
 $sql = "SELECT * FROM signup WHERE email = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $email);
 $stmt->execute();
+
 $result = $stmt->get_result();
 
-// Check if the user exists
+// If user found
 if ($result->num_rows === 1) {
-    $row = $result->fetch_assoc();
+    $user = $result->fetch_assoc();
+    $storedHash = $user['password'];
 
-    // Verify password
-    if (password_verify($password, $row["password"])) {
-        $_SESSION["user"] = !empty($row["name"]) ? $row["name"] : $row["email"]; // Store session
-        
-        echo "Login successful!";
-        exit();
+    // DEBUG LOGS (Optional: View in XAMPP or Apache error log)
+    error_log("Entered Password: $password");
+    error_log("Stored Hash: $storedHash");
+
+    // Check password using password_verify
+    if (password_verify($password, $storedHash)) {
+        echo json_encode([
+            "status" => "success",
+            "message" => "Login successful!",
+            "redirect" => "../frontend/html/index.html"
+        ]);
     } else {
-        die("Error: Incorrect password. Please try again.");
+        echo json_encode(["status" => "error", "message" => "Incorrect password."]);
     }
 } else {
-    die("Error: No account found with this email.");
+    echo json_encode(["status" => "error", "message" => "Email not found."]);
 }
 
-// Close database connection
+// Close connections
 $stmt->close();
 $conn->close();
 ?>

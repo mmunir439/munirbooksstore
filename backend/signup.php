@@ -5,47 +5,59 @@ include '../backend/connect.php'; // Include database connection
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Check if form submission is working
+// Check request method
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    die("Error: Invalid request method.");
+    die(json_encode(["status" => "error", "message" => "Invalid request method. Use POST."]));
 }
-
-// Debugging: Print received data
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
 
 // Validate required fields
 $required_fields = ["name", "email", "address", "phone", "age", "DOB", "password"];
 foreach ($required_fields as $field) {
-    if (!isset($_POST[$field]) || empty($_POST[$field])) {
-        die("Error: Required fields are missing - " . $field);
+    if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
+        die(json_encode(["status" => "error", "message" => "Missing required field: $field"]));
     }
 }
 
-// Database connection check
+// Check database connection
 if (!$conn) {
-    die("Error: Database connection failed.");
+    die(json_encode(["status" => "error", "message" => "Database connection failed."]));
 }
 
-// Secure password hashing
-$name = $_POST["name"];
-$email = $_POST["email"];
-$address = $_POST["address"];
-$phone = $_POST["phone"];
-$age = $_POST["age"];
-$dob = $_POST["DOB"];
-$password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+// Securely retrieve input values
+$name = trim($_POST["name"]);
+$email = strtolower(trim($_POST["email"])); // Ensure formatting
+$address = trim($_POST["address"]);
+$phone = trim($_POST["phone"]);
+$age = trim($_POST["age"]);
+$dob = trim($_POST["DOB"]);
+$password = password_hash(trim($_POST["password"]), PASSWORD_DEFAULT); // Hash password
 
-// Insert user data into the database (Removing `photo` column)
-$sql = "INSERT INTO signup (name, email, address, phone, age, DOB, password) 
-        VALUES ('$name', '$email', '$address', '$phone', '$age', '$dob', '$password')";
+// Debugging: Check if email is correctly received
+error_log("Received Email: " . $email);
 
-if ($conn->query($sql) === TRUE) {
-    echo "<script>alert('Account created successfully!'); window.location.href='../frontend/html/login.html';</script>";
+// Prepare SQL statement to insert data securely
+$sql = "INSERT INTO signup (name, email, address, phone, age, DOB, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sssssss", $name, $email, $address, $phone, $age, $dob, $password);
+
+// Execute the query safely
+if ($stmt->execute()) {
+    $response = [
+        "status" => "success",
+        "message" => "Account created successfully!",
+        "redirect" => "../frontend/html/login.html"
+    ];
+    header('Content-Type: application/json'); // ✅ Ensure JSON response format
+    echo json_encode($response);
+    exit; // ✅ Stops further execution after sending JSON
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo json_encode([
+        "status" => "error",
+        "message" => "Signup failed. " . $conn->error
+    ]);
 }
 
+// Close connections
+$stmt->close();
 $conn->close();
 ?>
