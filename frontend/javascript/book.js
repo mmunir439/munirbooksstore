@@ -1,20 +1,28 @@
-document.querySelectorAll(".view-details-btn").forEach((button) => {
-  button.addEventListener("click", function () {
-    fetch("http://localhost/munirbooksstore/backend/bookdetails.php")
+let viewdetailsarray = [
+  document.querySelector("#view1"),
+  document.querySelector("#view2"),
+  document.querySelector("#view3"),
+];
+
+viewdetailsarray.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    let bookId = index + 1;
+
+    fetch(
+      `http://localhost/munirbooksstore/backend/bookdetails.php?id=${bookId}`
+    )
       .then((response) => response.json())
       .then((data) => {
-        if (data.length > 0) {
-          let book = data[0]; // Get the first book object
-
-          // Save book details in Local Storage
-          localStorage.setItem("selectedBook", JSON.stringify(book));
-
-          // Redirect to `bookdetails.html`
-          window.location.href = "../html/bookdetails.html";
+        if (data.error) {
+          console.error("PHP Error:", data.error);
         } else {
-          alert("No book data found.");
+          // Save to localStorage
+          localStorage.setItem("selectedBook", JSON.stringify(data));
+
+          // ✅ Redirect to bookdetails.html
+          window.location.href = "../html/bookdetails.html";
         }
       })
-      .catch((error) => console.error("Error fetching book details:", error));
+      .catch((err) => console.error("Fetch Error:", err));
   });
 });

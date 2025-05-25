@@ -4,16 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Details</title>
-    <link rel="stylesheet" href="/frontend/styles/bookdetails.css" />
+    <link rel="stylesheet" href="../styles/bookdetails.css" />
     <script src="../javascript/bookdetails.js" defer></script>
   </head>
   <body>
+    <!-- header or navigation bar -->
+    <header>
+      <nav>
+        <div class="brand">
+          <a href="#"
+            ><span><i class="fa-regular fa-face-smile"></i></span
+          ></a>
+          <a href="#"><strong>Online Book Store</strong></a>
+        </div>
+        <ul>
+          <li><a href="../html/index.html">Home</a></li>
+          <li><a href="../html/book.html">Books</a></li>
+          <li><a href="../html/userboard.html">Dashboard</a></li>
+          <li><a href="/frontend/html/signup.html">Register</a></li>
+        </ul>
+      </nav>
+    </header>
+    <hr />
     <div class="book-container">
-      <img id="bookImage" src="" alt="Book Cover" width="150" />
+      <img id="bookImage" src="" alt="Book Cover" />
       <h2 id="bookTitle">Title:</h2>
       <p id="bookAuthor">Author:</p>
       <p id="bookPrice">Price:</p>
       <p id="bookDescription">Description:</p>
+      <button>Add to Cart</button>
     </div>
+    <br />
+    <p><a href="index.html">&larr; Back to Home</a></p>
+    <footer>
+      <div class="payment_method">
+        <span>| EasyPaisa |</span>
+        <span>JazzCash |</span>
+        <span>Hbl |</span>
+        <span>hbl Konnect |</span>
+        <p>&copy; 2025 Online Bookstore. All Rights Reserved.</p>
+      </div>
+      <div class="social-links">
+        <a href="#">Facebook</a><a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <p>Email: support@onlinebookstore.com</p>
+        <p>Phone: +923467293461</p>
+      </div>
+      <div id="terms_condition">
+        <p><a href="terms.html">Terms & Conditions</a> |</p>
+        <p><a href="privacy.html">Privacy Policy</a></p>
+      </div>
+    </footer>
   </body>
+
+  <script src="../javascript/bookdetails.js" defer></script>
 </html>

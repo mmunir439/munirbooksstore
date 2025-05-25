@@ -1,29 +1,35 @@
-<?php
-include '../backend/connect.php'; // Include database connection
+    <?php
+    header("Access-Control-Allow-Origin: *");
+    header("Content-Type: application/json");
 
-if (!$conn) {
-    die(json_encode(["error" => "Database connection failed"]));
-}
+    include '../backend/connect.php';
 
-header("Content-Type: application/json");
+    // // REMOVE ANY EXTRA ECHO STATEMENTS HERE
+    // if (!$conn) {
+    //     die(json_encode(["error" => "Database connection failed", "details" => mysqli_connect_error()]));
+    // }
 
-$sql = "SELECT id, title, author, price, description, image_url FROM books WHERE id = 1";
-$result = $conn->query($sql);
-
-if (!$result) {
-    die(json_encode(["error" => "SQL Error: " . $conn->error]));
-}
-
-$data = []; // Initialize array
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
+    // Ensure book ID is valid
+    $bookId = isset($_GET['id']) ? intval($_GET['id']) : 0;
+    if ($bookId <= 0) {
+        echo json_encode(["error" => "Invalid book ID"]);
+        exit();
     }
-} else {
-    $data = ["message" => "No data found"];
-}
 
-echo json_encode($data);
-$conn->close();
-?>
+    // Fetch book details
+    $sql = "SELECT id, title, author, price, description, image_url FROM books WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $bookId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Return JSON response
+    if ($result->num_rows > 0) {
+        echo json_encode($result->fetch_assoc(), JSON_PRETTY_PRINT);
+    } else {
+        echo json_encode(["error" => "No book found"], JSON_PRETTY_PRINT);
+    }
+
+    $stmt->close();
+    $conn->close();
+    ?>

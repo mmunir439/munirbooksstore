@@ -90,3 +90,9 @@ button:hover {
     width: 80%;
   }
 }
+#sign {
+  color: blue;
+  font-size: 20px;
+  font-family: cursive;
+  font-weight: bold;
+}
