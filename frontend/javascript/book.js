@@ -19,7 +19,7 @@ viewdetailsarray.forEach((button, index) => {
           // Save to localStorage
           localStorage.setItem("selectedBook", JSON.stringify(data));
 
-          // ✅ Redirect to bookdetails.html
+          // Redirect to bookdetails.html
           window.location.href = "../html/bookdetails.html";
         }
       })

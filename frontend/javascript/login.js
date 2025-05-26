@@ -24,7 +24,7 @@ loginEl.addEventListener("click", async (event) => {
 
   try {
     let response = await fetch(
-      "http://localhost/online_book_storeee/backend/login.php",
+      "http://localhost/munirbooksstore/backend/login.php",
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },

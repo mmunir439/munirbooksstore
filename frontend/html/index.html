@@ -29,91 +29,74 @@
       </nav>
     </header>
     <hr />
-    <section id="hero">
-      <h2>Discover Your Next Favorite Book</h2>
-      <div>
-        <input type="text" id="serachBox" placeholder="Search for books..." />
-        <button id="browserBooks">Browse Books</button>
-      </div>
-    </section>
-    <!-- <div class="booksAvailable">
-      <ul class="bookshelf_one">
-        <li><a href="#">Accounting and Finiance Books</a></li>
-        <li><a href="#">Childer Books</a></li>
-        <li><a href="#">matric Books</a></li>
-        <li><a href="#">Colleges Books</a></li>
-        <li><a href="#">CSS Books</a></li>
-        <li><a href="#">Dictionaries</a></li>
-        <li><a href="#">Entry Test/Standerized Books</a></li>
-        <li><a href="#">Forces Books</a></li>
-        <li><a href="#">General knowledge Books</a></li>
-        <li><a href="#">Islamic Books</a></li>
-        <li><a href="#">Law Books</a></li>
-        <li><a href="#">MBBS Books</a></li>
-        <li><a href="#">Medical Books</a></li>
-        <li><a href="#">Novels</a></li>
-        <li><a href="#">University Books</a></li>
-        <li><a href="#">Scientific & Financial Calculators</a></li>
-      </ul>
-    </div> -->
+   <section id="hero">
+  <h2>Discover Your Next Favorite Book</h2>
+  <div>
+    <input type="text" id="searchBox" placeholder="Search for books..." />
+    <button id="browseBooks">Browse Books</button>
+  </div>
+  <p id="enterbooks">Please enter a book name.</p>
+</section>
+<!-- Add this inside or right after the #hero section -->
+<div id="searchResults" class="featured"></div>
     <div class="featured">
       <div class="card image">
-        <a href="/frontend/html/bookdetails.html">
-          <img
-            src="/frontend/images/Universty books/computer network.jpeg"
-            alt="computer networks"
-          />
-          <br />
-          <a href="#">Computer Networks</a>
-          <p><span>price:</span><span>Rs.1000</span></p>
-        </a>
+        <img
+          src="/frontend/images/Universty books/computer network.jpeg"
+          alt="computer networks"
+        />
+        <br />
+        <h2>Computer Netowrs</h2>
+        <p><span>price:</span><span>Rs.1000</span></p>
+        <br>
+        <button id="view1">View Details</button>
+        <br>
       </div>
       <div class="card image_2">
-        <a href="/frontend/html/bookdetails.html">
-          <img
-            src="/frontend/images/General Books/The Golden Age.jpeg"
-            alt="the Golden books"
-          />
-          <br />
-          <a href="#">Golden Age</a>
-          <p><span>price:</span><span>Rs.1000</span></p>
-        </a>
+        <img
+        src="/frontend/images/General Books/The Golden Age.jpeg"
+        alt="the Golden books"
+        />
+        <br />
+        <h2>Golden Age</h2>
+        <p><span>price:</span><span>Rs.1000</span></p>
+        <br>
+        <button id="view2">View Details</button>
+        <br>
       </div>
       <div class="card">
-        <a href="/frontend/html/bookdetails.html">
-          <img
-            src="/frontend/images/Mbbs Books/medicine.jpeg"
-            alt="Mbbs books"
-          />
-          <br />
-          <a href="#">MBBS Books</a>
-          <p><span>price:</span><span>Rs.1000</span></p>
-        </a>
+        <img src="/frontend/images/Mbbs Books/medicine.jpeg" alt="Mbbs books" />
+        <br />
+        <h2>MBBS Books</h2>
+        <p><span>price:</span><span>Rs.1000</span></p>
+        <br>
+         <button id="view3">View Details</button>
+        <br>
       </div>
       <div class="card quran">
-        <a href="/frontend/html/bookdetails.html">
-          <img
-            src="/frontend/images/Islamic Books/Quran.jpeg"
-            alt="quran books"
-          />
-          <br />
-          <br />
-          <a href="#">Quran Book</a>
-          <br />
-          <p><span>price:</span><span>Rs.1000</span></p>
-        </a>
-      </div>
-      <div class="card">
-        <a href="/frontend/html/bookdetails.html">
-          <img
-            src="/frontend/images/Forces books/air force.jpeg"
-            alt="Air force books"
-          />
-          <br />
-
-          <a href="#">Air Force Books</a>
-          <p><span>price:</span><span>Rs.1000</span></p>
-        </a>
+        <img
+        src="/frontend/images/css books/css englsih.jpeg"
+        />
+        <br>
+        <h2>English css Book</h2>
+        <p><span>price:</span><span>Rs.1000</span></p>
+      </a>
+      <br>
+       <button id="view4">View Details</button>
+      <br>
+    </div>
+    <div class="card">
+      <img
+      src="/frontend/images/Forces books/air force.jpeg"
+      alt="Air force books"
+      />
+      <br />
+      <h2>Air Force Books</h2>
+      <p><span>price:</span><span>Rs.1000</span></p>
+    </a>
+    <br>
+     <button id="view5">View Details</button>
+    <br>
       </div>
     </div>
     <div class="textimonial_reviews">
@@ -122,24 +105,31 @@
           src="/frontend/images/testimonial_reviews/amir_reviews.avif"
           alt="Amir reviews"
         />
-        <h2>Sohail</h2>
-        <p>"Very funny"</p>
+        <br>
+        <h2>Imran Khan</h2>
+        <p>"Very funny and amazing I found these books after reading."</p>
       </div>
       <div class="corona">
         <img
           src="/frontend/images/testimonial_reviews/corona customer.avif"
           alt="Corona bought book"
         />
-        <h2>Tanveer</h2>
-        <p>"I was busy even i was jobless."</p>
+        <h2>Sohail Tanvir</h2>
+        <p>
+          "I was busy even i was jobless when i was reading and buying books
+          from there."
+        </p>
       </div>
       <div class="sleeping">
         <img
           src="/frontend/images/testimonial_reviews/funny book with cheap price.webp"
           alt="sleeping"
         />
-        <h2>Amir</h2>
-        <p>"I filled joy by buying book"</p>
+        <h2>Amir Liquat</h2>
+        <p>
+          "I filled joy by buying book from here. I have got too much discount
+          after permanent customer."
+        </p>
       </div>
     </div>
     <footer>
@@ -161,5 +151,6 @@
         <p><a href="privacy.html">Privacy Policy</a></p>
       </div>
     </footer>
+      <script src="../javascript/index.js"></script>
   </body>
 </html>

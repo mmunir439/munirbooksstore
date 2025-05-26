@@ -8,7 +8,6 @@
     <script src="../javascript/bookdetails.js" defer></script>
   </head>
   <body>
-    <!-- header or navigation bar -->
     <header>
       <nav>
         <div class="brand">
@@ -26,22 +25,45 @@
       </nav>
     </header>
     <hr />
+
     <div class="book-container">
       <img id="bookImage" src="" alt="Book Cover" />
-      <h2 id="bookTitle">Title:</h2>
-      <p id="bookAuthor">Author:</p>
-      <p id="bookPrice">Price:</p>
-      <p id="bookDescription">Description:</p>
-      <button>Add to Cart</button>
+      <div class="book-details">
+        <h2 id="bookTitle">Title:</h2>
+        <p id="bookAuthor">Author:</p>
+        <p id="bookPrice">Price:</p>
+        <p id="bookDescription">Description:</p>
+
+        <label for="paymentSelect"
+          ><strong style="color: red">Select Payment Method:</strong></label
+        >
+        <select id="paymentSelect">
+          <option value="" disabled selected>Choose payment</option>
+          <option value="easypaisa">EasyPaisa</option>
+          <option value="jazzcash">JazzCash</option>
+          <option value="hbl">HBL</option>
+          <option value="hblkonnect">HBL Konnect</option>
+        </select>
+
+        <label for="quantityInput"><strong>Quantity:</strong></label>
+        <input type="number" id="quantityInput" min="1" value="1" />
+
+        <p id="paymentNumber"></p>
+        <p id="paymentError"></p>
+        <p id="successMessage"></p>
+
+        <button id="addToCartBtn">Add to Cart</button>
+      </div>
     </div>
-    <br />
-    <p><a href="index.html">&larr; Back to Home</a></p>
+
+    <p class="back-home"><a href="index.html">&larr; Back to Home</a></p>
+
     <footer>
       <div class="payment_method">
         <span>| EasyPaisa |</span>
         <span>JazzCash |</span>
-        <span>Hbl |</span>
-        <span>hbl Konnect |</span>
+        <span>HBL |</span>
+        <span>HBL Konnect |</span>
         <p>&copy; 2025 Online Bookstore. All Rights Reserved.</p>
       </div>
       <div class="social-links">
@@ -56,6 +78,4 @@
       </div>
     </footer>
   </body>
-
-  <script src="../javascript/bookdetails.js" defer></script>
 </html>

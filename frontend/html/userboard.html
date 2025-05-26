@@ -49,5 +49,25 @@
         </p>
       </div>
     </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const orders = JSON.parse(localStorage.getItem("orders")) || [];
+        const ordersList = document.querySelector("#user-info ul");
+
+        // Clear default example li
+        ordersList.innerHTML = "";
+
+        if (orders.length === 0) {
+          ordersList.innerHTML = "<li>No orders yet.</li>";
+          return;
+        }
+
+        orders.forEach((order) => {
+          const li = document.createElement("li");
+          li.textContent = `${order.title} - Status: ${order.status}`;
+          ordersList.appendChild(li);
+        });
+      });
+    </script>
   </body>
 </html>

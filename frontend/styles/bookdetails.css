@@ -67,7 +67,7 @@ nav ul li a:hover {
 
 /* Book Image */
 .book-container img {
-  width: 280px;
+  width: 180px;
   height: auto;
   border-radius: 8px;
   object-fit: cover;
@@ -91,7 +91,7 @@ nav ul li a:hover {
 .book-container button {
   margin-top: 20px;
   padding: 12px 24px;
-  background-color: #1abc9c;
+  background-color: green;
   color: white;
   border: none;
   border-radius: 6px;
@@ -182,12 +182,12 @@ footer nav ul li a:hover {
   color: #f39c12;
 }
 a {
-      color: orangered;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+  color: orangered;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
 /* Responsive */
 @media screen and (max-width: 768px) {
   header {

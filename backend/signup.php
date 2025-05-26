@@ -1,63 +1,67 @@
 <?php
-include '../backend/connect.php'; // Include database connection
+include '../backend/connect.php'; // Ensure correct path
 
-// Enable error reporting for debugging
+// Enable error reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Check request method
+// Validate POST method
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    die(json_encode(["status" => "error", "message" => "Invalid request method. Use POST."]));
+    header('Content-Type: application/json');
+    echo json_encode(["status" => "error", "message" => "Invalid request method. Use POST."]);
+    exit;
 }
 
-// Validate required fields
+// Required fields
 $required_fields = ["name", "email", "address", "phone", "age", "DOB", "password"];
 foreach ($required_fields as $field) {
     if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
-        die(json_encode(["status" => "error", "message" => "Missing required field: $field"]));
+        header('Content-Type: application/json');
+        echo json_encode(["status" => "error", "message" => "Missing required field: $field"]);
+        exit;
     }
 }
 
-// Check database connection
+// Check DB connection
 if (!$conn) {
-    die(json_encode(["status" => "error", "message" => "Database connection failed."]));
+    header('Content-Type: application/json');
+    echo json_encode(["status" => "error", "message" => "Database connection failed."]);
+    exit;
 }
 
-// Securely retrieve input values
+// Clean and hash input
 $name = trim($_POST["name"]);
-$email = strtolower(trim($_POST["email"])); // Ensure formatting
+$email = strtolower(trim($_POST["email"]));
 $address = trim($_POST["address"]);
 $phone = trim($_POST["phone"]);
 $age = trim($_POST["age"]);
 $dob = trim($_POST["DOB"]);
-$password = password_hash(trim($_POST["password"]), PASSWORD_DEFAULT); // Hash password
+$password = password_hash(trim($_POST["password"]), PASSWORD_DEFAULT);
 
-// Debugging: Check if email is correctly received
-error_log("Received Email: " . $email);
-
-// Prepare SQL statement to insert data securely
+// Insert
 $sql = "INSERT INTO signup (name, email, address, phone, age, DOB, password) VALUES (?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sssssss", $name, $email, $address, $phone, $age, $dob, $password);
 
-// Execute the query safely
-if ($stmt->execute()) {
-    $response = [
-        "status" => "success",
-        "message" => "Account created successfully!",
-        "redirect" => "../frontend/html/login.html"
-    ];
-    header('Content-Type: application/json'); // ✅ Ensure JSON response format
-    echo json_encode($response);
-    exit; // ✅ Stops further execution after sending JSON
-} else {
-    echo json_encode([
-        "status" => "error",
-        "message" => "Signup failed. " . $conn->error
-    ]);
+if ($stmt === false) {
+    header('Content-Type: application/json');
+    echo json_encode(["status" => "error", "message" => "SQL prepare failed: " . $conn->error]);
+    exit;
 }
 
-// Close connections
+$stmt->bind_param("sssssss", $name, $email, $address, $phone, $age, $dob, $password);
+
+if ($stmt->execute()) {
+    header('Content-Type: application/json');
+    echo json_encode([
+        "status" => "success",
+        "message" => "Account created successfully!",
+        "redirect" => "/munirbooksstore/frontend/login.html"
+    ]);
+} else {
+    header('Content-Type: application/json');
+    echo json_encode(["status" => "error", "message" => "Signup failed: " . $stmt->error]);
+}
+
 $stmt->close();
 $conn->close();
 ?>
