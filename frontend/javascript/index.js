@@ -83,7 +83,7 @@ function viewDetails(bookId) {
     })
     .catch((err) => console.error("Detail fetch error:", err));
 }
-
+//fetching data from database to show profile icon
 async function fetchAndShowUser() {
   try {
     const res = await fetch(
@@ -106,9 +106,9 @@ async function fetchAndShowUser() {
           }" 
             alt="User Photo" 
             style="width:30px; height:30px; border-radius:50%; object-fit:cover;"/>
-          <span>${data.user_name}</span>
-        </a>
-      `;
+            </a>
+            `;
+      // <span>${data.user_name}</span>
 
       // When user clicks the name/photo, show popup with details
       document

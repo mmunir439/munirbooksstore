@@ -34,6 +34,16 @@
       </nav>
     </header>
     <hr />
+    <!-- User Popup -->
+      <div id="userPopup" style="display:none; position:fixed; top:8%; left:80%; transform:translateX(-50%); background:#fff; padding:20px; border:1px solid #ccc; z-index:1000;height: fit-content;">
+        <button id="closeUserPopup" style="float:right;">&times;</button>
+        <img id="popupUserPhoto" src="" alt="User Photo" style="width:60px; height:60px; border-radius:50%; object-fit:cover;">
+        <h2 id="popupUserName"></h2>
+        <p id="popupUserAge"></p>
+        <p id="popupUserEmail"></p>
+        <a style="text-decoration: none; color: red; font-weight: bold; font-size: large;" href="http://localhost/munirbooksstore/backend/logout.php">logout</a>
+      </div>
+
    <section id="hero">
   <h2>Discover Your Next Favorite Book</h2>
   <div>
@@ -148,7 +158,8 @@
       <div class="social-links">
         <a href="#">Facebook</a><a href="#">Twitter</a>
         <a href="#">Instagram</a>
-        <p>Email: support@onlinebookstore.com</p>
+        <p>Email: <a href="mailto:support@onlinebookstore.com">support@onlinebookstore.com</a></p>
+         <br>
         <p>Phone: +923467293461</p>
       </div>
       <div id="terms_condition">
