@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Munir Books Store</title>
+    <link rel="stylesheet" href="../styles/contactus.css" />
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+      }
+      header {
+        background-color: #343a40;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+      }
+      .container {
+        max-width: 960px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+      }
+      .contact-info p {
+        margin: 10px 0;
+        font-size: 1.1em;
+      }
+      iframe {
+        width: 100%;
+        height: 350px;
+        margin-top: 20px;
+        border: none;
+      }
+      form {
+        margin-top: 30px;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      button {
+        padding: 12px 24px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Contact Munir Books Store</h1>
+    </header>
+
+    <div class="container">
+      <div class="contact-info">
+        <h2>Office Information</h2>
+        <p>
+          <strong>Address:</strong> Near International Islamic University
+          (IIUI), Sector H-10, Islamabad
+        </p>
+        <p><strong>Phone:</strong> +92 300 1234567</p>
+        <p><strong>Email:</strong> contact@munirbooksstore.com</p>
+        <p><strong>Hours:</strong> Monday - Saturday, 9 AM - 6 PM</p>
+      </div>
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.340260646431!2d73.02429197464338!3d33.69314004069292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbf343313b4ef%3A0x44e7f6a2d563b51e!2sInternational%20Islamic%20University%2C%20Islamabad!5e0!3m2!1sen!2s!4v1716800000000"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      >
+      </iframe>
+
+      <form
+        action="http://localhost/munirbooksstore/backend/contact_form.php"
+        method="POST"
+      >
+        <h2>Send Us a Message</h2>
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea
+          name="message"
+          rows="6"
+          placeholder="Your Message"
+          required
+        ></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+    <p>
+      <a
+        style="color: orange; margin-left: 10px"
+        href="http://localhost/munirbooksstore/frontend/html/index.html"
+        >&larr; Back to Home</a
+      >
+    </p>
+  </body>
+</html>

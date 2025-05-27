@@ -4,16 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-    <link rel="stylesheet" href="/frontend/styles/signup.css" />
+    <link
+      rel="stylesheet"
+      href="http://localhost/munirbooksstore/frontend/styles/signup.css"
+    />
   </head>
   <body>
     <header>
       <nav>
         <ul id="headerddd">
-          <li><a href="../html/index.html">Home</a></li>
-          <li><a href="../html/book.html">Books</a></li>
-          <li><a href="../html/userboard.html">Dashboard</a></li>
-          <li><a href="/frontend/html/signup.html">Register</a></li>
+          <li>
+            <a href="http://localhost/munirbooksstore/frontend/html/index.html"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="http://localhost/munirbooksstore/frontend/html/book.html"
+              >Books</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://localhost/munirbooksstore/frontend/html/userboard.html"
+              >Dashboard</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://localhost/munirbooksstore/frontend/html/contactus.html"
+              >Contact us</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
@@ -21,51 +42,56 @@
     <div class="containerloginsing">
       <div id="signupSection">
         <h2>Sign Up</h2>
-        <form id="signupForm" method="POST">
+        <!-- /frontend/html/signup.html -->
+        <form
+          action="http://localhost/munirbooksstore/backend/signup.php"
+          method="POST"
+        >
           <input
             type="text"
-            id="name"
+            placeholder="Enter your name"
             name="name"
-            placeholder="Full Name"
             required
           />
           <input
             type="email"
-            id="email"
+            placeholder="Enter your email"
             name="email"
-            placeholder="Email"
             required
           />
           <input
             type="text"
-            id="address"
+            placeholder="Enter your current address"
             name="address"
-            placeholder="Address"
             required
           />
           <input
             type="text"
-            id="phone"
+            placeholder="Enter your phone number"
             name="phone"
-            placeholder="Phone Number"
             required
           />
-          <input type="number" id="age" name="age" placeholder="Age" required />
-          <input type="date" id="DOB" name="DOB" required />
+          <input type="number" placeholder="Enter your age" name="age" />
+          <input
+            type="date"
+            placeholder="Enter your date of birth"
+            name="DOB"
+            required
+          />
           <input
             type="password"
-            id="password"
+            placeholder="Enter password"
             name="password"
-            placeholder="Password"
             required
           />
           <button type="submit">Sign Up</button>
         </form>
+
         <p>
           Already have an account?
           <a
             id="sign"
-            href="/frontend/html/login.html"
+            href="http://localhost/munirbooksstore/frontend/html/login.html"
             style="text-decoration: none"
             >Login</a
           >
@@ -73,7 +99,5 @@
       </div>
     </div>
     <br />
-
-    <script src="/frontend/javascript/signup.js"></script>
   </body>
 </html>

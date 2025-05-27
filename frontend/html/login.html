@@ -4,38 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="/frontend/styles/login.css" />
+    <link
+      rel="stylesheet"
+      href="http://localhost/munirbooksstore/frontend/styles/login.css"
+    />
   </head>
   <body>
+    <!-- /frontend/html/login.html -->
     <form
-      action="http://localhost/online_book_storeee/backend/login.php"
+      action="http://localhost/munirbooksstore/backend/login.php"
       method="POST"
+      autocomplete="off"
     >
       <input
         type="email"
         name="email"
-        id="email"
         placeholder="Email"
         required
+        readonly
+        onfocus="this.removeAttribute('readonly');"
+        autocomplete="off"
       />
       <input
         type="password"
         name="password"
-        id="password"
         placeholder="Password"
         required
+        readonly
+        onfocus="this.removeAttribute('readonly');"
+        autocomplete="new-password"
       />
-      <button type="submit" id="login">Sign In</button>
+      <button type="submit">Sign In</button>
     </form>
+
     <p>
       Do not have account?
-      <a id="sign"
-        href="../html/signup.html"
+      <a
+        id="sign"
+        href="http://localhost/munirbooksstore/frontend/html/signup.html"
         id="signupswitchingtologininterface"
         style="text-decoration: none"
         >signunp</a
       >
     </p>
-    <script src="../frontend/javascript/login.js"></script>
+    <!-- page reload and when it reloads then input fields should empty optional javascript handlign for this  -->
+    <!-- <script>
+  window.onload = () => {
+    document.querySelectorAll('input[type="email"], input[type="password"]').forEach(input => {
+      input.value = '';
+    });
+  };
+</script> -->
   </body>
 </html>
