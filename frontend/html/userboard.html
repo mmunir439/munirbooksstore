@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Dashboard</title>
     <script
       src="https://kit.fontawesome.com/02a6584dd0.js"
@@ -35,11 +34,12 @@
         </ul>
       </nav>
     </header>
+
     <section id="user-info">
-      <h2>Welcome, User!</h2>
+      <h2 id="welcome-msg">Welcome, User!</h2>
       <p>Your Recent Orders:</p>
-      <ul>
-        <li>Book Title - Status: Delivered</li>
+      <ul id="orders-list">
+        <li>Loading orders...</li>
       </ul>
     </section>
 
@@ -59,30 +59,54 @@
       </div>
       <div id="terms_condition">
         <p><a href="terms.html">Terms & Conditions</a> |</p>
-        <p>
-          <a href="privacy.html">Privacy Policy</a>
-        </p>
+        <p><a href="privacy.html">Privacy Policy</a></p>
       </div>
     </footer>
+
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const orders = JSON.parse(localStorage.getItem("orders")) || [];
-        const ordersList = document.querySelector("#user-info ul");
+      async function fetchUserData() {
+        try {
+          const res = await fetch(
+            "http://localhost/munirbooksstore/backend/check_session.php",
+            {
+              credentials: "include", // important if session cookies are cross-origin or you want cookies sent
+            }
+          );
+          const data = await res.json();
 
-        // Clear default example li
-        ordersList.innerHTML = "";
+          if (!data.loggedIn) {
+            // Not logged in - redirect to login page
+            window.location.href =
+              "http://localhost/munirbooksstore/frontend/html/login.html";
+            return;
+          }
 
-        if (orders.length === 0) {
-          ordersList.innerHTML = "<li>No orders yet.</li>";
-          return;
+          // Update welcome message with user name
+          document.getElementById(
+            "welcome-msg"
+          ).textContent = `Welcome, ${data.user_name}!`;
+
+          // Load orders from localStorage (or show no orders)
+          const orders = JSON.parse(localStorage.getItem("orders")) || [];
+          const ordersList = document.getElementById("orders-list");
+          ordersList.innerHTML = "";
+
+          if (orders.length === 0) {
+            ordersList.innerHTML = "<li>No orders yet.</li>";
+            return;
+          }
+
+          orders.forEach((order) => {
+            const li = document.createElement("li");
+            li.textContent = `${order.title} - Status: ${order.status}`;
+            ordersList.appendChild(li);
+          });
+        } catch (err) {
+          console.error("Error fetching user data:", err);
         }
+      }
 
-        orders.forEach((order) => {
-          const li = document.createElement("li");
-          li.textContent = `${order.title} - Status: ${order.status}`;
-          ordersList.appendChild(li);
-        });
-      });
+      document.addEventListener("DOMContentLoaded", fetchUserData);
     </script>
   </body>
 </html>

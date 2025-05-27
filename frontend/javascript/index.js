@@ -83,3 +83,67 @@ function viewDetails(bookId) {
     })
     .catch((err) => console.error("Detail fetch error:", err));
 }
+
+async function fetchAndShowUser() {
+  try {
+    const res = await fetch(
+      "http://localhost/munirbooksstore/backend/check_session.php",
+      {
+        credentials: "include",
+      }
+    );
+    const data = await res.json();
+
+    const userMenuContainer = document.getElementById("userMenuContainer");
+
+    if (data.loggedIn) {
+      // Replace Register link with user name and photo (use placeholder photo if none)
+      userMenuContainer.innerHTML = `
+        <a href="#" id="userMenuTrigger" style="cursor:pointer; display:flex; align-items:center; gap:8px;">
+          <img src="${
+            data.profile_image ||
+            "http://localhost/munirbooksstore/frontend/images/default-user.png"
+          }" 
+            alt="User Photo" 
+            style="width:30px; height:30px; border-radius:50%; object-fit:cover;"/>
+          <span>${data.user_name}</span>
+        </a>
+      `;
+
+      // When user clicks the name/photo, show popup with details
+      document
+        .getElementById("userMenuTrigger")
+        .addEventListener("click", (e) => {
+          e.preventDefault();
+          showUserPopup(data);
+        });
+    } else {
+      // Not logged in - show Register link
+      userMenuContainer.innerHTML = `<a href="http://localhost/munirbooksstore/frontend/html/signup.html" id="registerLink">Register</a>`;
+    }
+  } catch (err) {
+    console.error("Error fetching user data:", err);
+  }
+}
+
+function showUserPopup(userData) {
+  document.getElementById("popupUserPhoto").src =
+    userData.profile_image ||
+    "http://localhost/munirbooksstore/frontend/images/default-user.png";
+  document.getElementById("popupUserName").textContent =
+    userData.user_name || "No Name";
+  document.getElementById("popupUserAge").textContent = userData.age
+    ? `Age: ${userData.age}`
+    : "";
+  document.getElementById("popupUserEmail").textContent = userData.email || "";
+
+  const popup = document.getElementById("userPopup");
+  popup.style.display = "block";
+
+  // Close button
+  document.getElementById("closeUserPopup").onclick = () => {
+    popup.style.display = "none";
+  };
+}
+
+document.addEventListener("DOMContentLoaded", fetchAndShowUser);

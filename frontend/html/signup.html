@@ -46,6 +46,7 @@
         <form
           action="http://localhost/munirbooksstore/backend/signup.php"
           method="POST"
+          enctype="multipart/form-data"
         >
           <input
             type="text"
@@ -78,6 +79,8 @@
             name="DOB"
             required
           />
+          <input type="file" name="profile_image" accept="image/*" required />
+
           <input
             type="password"
             placeholder="Enter password"
