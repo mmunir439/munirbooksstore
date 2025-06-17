@@ -6,7 +6,7 @@ A simple **PHP + MySQL** full-stack web application for an online bookstore, fea
 
 ## 🚀 Live Preview (Optional)
 
-> Coming soon — you can deploy this project using platforms like **Netlify + backend APIs**, **Vercel**, or run it locally as below.
+> Coming soon — I can deploy this project using platforms like **Netlify + backend APIs**, **Vercel**, or run it locally as below.
 
 ---
 
